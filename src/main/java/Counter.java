@@ -15,10 +15,5 @@ public class Counter {
 
     public void incrementValue() {
         value++;
-        try {
-            Thread.sleep(1);
-        } catch (InterruptedException e) {
-            System.out.println("Tread was interrupted");
-        }
     }
 }
