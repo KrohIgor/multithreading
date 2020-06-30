@@ -1,17 +1,24 @@
-import java.util.concurrent.atomic.AtomicInteger;
-
 public class Counter {
-    private AtomicInteger value;
+    private int value;
 
-    public Counter(AtomicInteger value) {
+    public Counter(int value) {
         this.value = value;
     }
 
-    public AtomicInteger getValue() {
+    public int getValue() {
         return value;
     }
 
-    public void setValue(AtomicInteger value) {
+    public void setValue(int value) {
         this.value = value;
+    }
+
+    public void incrementValue() {
+        value++;
+        try {
+            Thread.sleep(1);
+        } catch (InterruptedException e) {
+            System.out.println("Tread was interrupted");
+        }
     }
 }

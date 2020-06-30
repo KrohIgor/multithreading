@@ -1,5 +1,3 @@
-import java.util.concurrent.atomic.AtomicInteger;
-
 public class CustomThreadExtendsTread extends Thread {
     private static final int BOUND = 100;
     private Counter counter;
@@ -12,16 +10,9 @@ public class CustomThreadExtendsTread extends Thread {
     @Override
     public void run() {
         System.out.println("Running Tread");
-        while (counter.getValue().get() < BOUND) {
-            AtomicInteger value = counter.getValue();
-            value.incrementAndGet();
-            counter.setValue(value);
-            System.out.println("Value in Tread is " + value);
-            try {
-                Thread.sleep(1);
-            } catch (InterruptedException e) {
-                System.out.println("Tread was interrupted");
-            }
+        while (counter.getValue() < BOUND) {
+            counter.incrementValue();
+            System.out.println("Value in Tread is " + counter.getValue());
         }
         System.out.println("Tread exiting");
     }
